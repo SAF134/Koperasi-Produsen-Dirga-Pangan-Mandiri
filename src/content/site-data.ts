@@ -173,7 +173,9 @@ export const homeContent = {
       href: "/profil",
     },
     image: {
-      src: "/images/hero-koperasi.jpg",
+      src: "/images/hero-koperasi.webp",
+      mobileSrc: "/images/hero-koperasi-mobile.webp",
+      fallbackSrc: "/images/hero-koperasi.jpg",
       alt: "Fasilitas Sentra Kandang Closed House Koperasi Produsen Dirga Pangan Mandiri",
       badge: "Sentra Fasilitas Koperasi",
       tag: "Placeholder Foto Utama",

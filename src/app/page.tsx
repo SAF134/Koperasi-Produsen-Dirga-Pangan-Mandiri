@@ -35,6 +35,21 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col">
+      {/* Preload Responsive LCP Hero Image for Instant Mobile LCP */}
+      <link
+        rel="preload"
+        as="image"
+        href={homeContent.hero.image.mobileSrc}
+        media="(max-width: 640px)"
+        type="image/webp"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href={homeContent.hero.image.src}
+        media="(min-width: 641px)"
+        type="image/webp"
+      />
       {/* ========================================================= */}
       {/* 1. HERO SECTION (DENGAN TEMPAT GAMBAR UTAMA KOPERASI)      */}
       {/* ========================================================= */}
@@ -112,14 +127,27 @@ export default function HomePage() {
               <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border-2 border-border bg-surface shadow-card hover:shadow-card-hover transition-all duration-300">
                 {/* Rasio Aspek Gambar: 4:3 di mobile, 16:9 di tablet, 4:3 / 5:4 di desktop */}
                 <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] lg:aspect-[4/3] xl:aspect-[5/4] bg-muted/30">
-                  <NextImage
-                    src={homeContent.hero.image.src}
-                    alt={homeContent.hero.image.alt}
-                    fill
-                    priority
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 45vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
+                  <picture>
+                    <source
+                      type="image/webp"
+                      media="(max-width: 640px)"
+                      srcSet={homeContent.hero.image.mobileSrc}
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet={homeContent.hero.image.src}
+                    />
+                    <img
+                      src={homeContent.hero.image.fallbackSrc}
+                      alt={homeContent.hero.image.alt}
+                      width={1200}
+                      height={670}
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
