@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-[75vh] items-center justify-center py-20 bg-canvas">
+    <div className="flex min-h-[75vh] items-center justify-center py-20 bg-canvas">
       <Container size="narrow">
         <div className="rounded-card border border-border bg-surface p-8 sm:p-14 text-center shadow-subtle">
           <span className="inline-flex items-center gap-1.5 rounded-pill bg-agri-light px-3.5 py-1 text-xs font-semibold text-agri-green mb-5">
@@ -70,6 +70,6 @@ export default function NotFound() {
           </div>
         </div>
       </Container>
-    </main>
+    </div>
   );
 }

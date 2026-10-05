@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Container from "@/components/shared/Container";
 import ContactForm from "@/components/sections/ContactForm";
+import MapFacade from "@/components/sections/MapFacade";
 import {
   siteIdentity,
   contactData,
@@ -179,7 +180,7 @@ export default function ContactPage() {
                       Jam Kerja Pelayanan:
                     </strong>
                     <p>{contactData.operatingHours}</p>
-                    <p className="mt-1 text-[11px] text-muted-ink/80">{contactData.operatingHoursNote}</p>
+                    <p className="mt-1 text-[11px] text-muted-ink">{contactData.operatingHoursNote}</p>
                   </div>
                 </div>
               </div>
@@ -229,17 +230,8 @@ export default function ContactPage() {
             </p>
           </div>
 
-          {/* Maps Iframe Container */}
-          <div className="relative w-full h-[380px] sm:h-[450px] overflow-hidden rounded-card border border-border bg-surface shadow-card hover:shadow-card-hover transition-all duration-300">
-            <iframe
-              src={contactData.googleMapsEmbedUrl}
-              title={`Peta Lokasi ${siteIdentity.name}`}
-              className="w-full h-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              aria-label="Peta Google Maps lokasi kantor koperasi"
-            />
-          </div>
+          {/* Maps On-Demand Facade Container */}
+          <MapFacade />
         </Container>
       </section>
     </div>

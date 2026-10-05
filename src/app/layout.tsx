@@ -168,9 +168,9 @@ export default function RootLayout({
         <Navbar />
 
         {/* Main Content Area (padding top for fixed header, padding bottom on mobile for dock) */}
-        <div id="main-content" className="flex-1 pt-20 pb-24 md:pb-0">
+        <main id="main-content" className="flex-1 pt-20 pb-24 md:pb-0">
           {children}
-        </div>
+        </main>
 
         {/* Global Footer */}
         <Footer />
