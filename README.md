@@ -163,3 +163,5 @@ Situs ini menerapkan kebijakan keamanan statis tingkat tinggi melalui `vercel.js
 ## 📄 Lisensi & Hak Cipta
 
 © 2026 Koperasi Produsen Dirga Pangan Mandiri. Seluruh hak cipta dilindungi undang-undang.
+#   K o p e r a s i - P r o d u s e n - D i r g a - P a n g a n - M a n d i r i  
+ 
