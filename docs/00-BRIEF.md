@@ -1,0 +1,44 @@
+# Project Brief: Website Koperasi Produsen Dirga Pangan Mandiri
+
+## 1. Ringkasan Proyek
+Website company profile ini dibangun untuk Koperasi Produsen Dirga Pangan Mandiri yang bergerak di bidang produksi dan kemitraan ayam broiler guna membangun kredibilitas kelembagaan serta memperluas jangkauan mitra usaha pangan. Situs ini dirancang dengan pendekatan arsitektur statis modern berkinerja tinggi (Next.js App Router Static Export, TypeScript, Tailwind CSS, shadcn/ui) yang mengadopsi estetika editorial bersih berbasis `DESIGN.md` dengan sentuhan aksen hijau pangan modern. Untuk target peluncuran akhir minggu ini, cakupan Minimum Viable Product (MVP) difokuskan pada enam halaman utama berbahasa Indonesia dengan konten terstruktur, galeri foto, tombol cepat WhatsApp, dan peta lokasi interaktif.
+
+---
+
+## 2. Rincian Brief (Spesifikasi Kebutuhan)
+
+| Parameter | Keterangan |
+|---|---|
+| **Nama Entitas** | Koperasi Produsen Dirga Pangan Mandiri |
+| **Bidang Usaha Utama** | Peternakan & Produksi Ayam Broiler (Kemitraan Peternak, Pasokan Ayam Potong, Distribusi Karkas) |
+| **Tujuan Website** | Membangun kredibilitas kelembagaan, menarik mitra bisnis B2B (distributor, horeka, supplier pakan), dan transparansi profil koperasi bagi publik |
+| **Target Pengunjung** | Mitra usaha B2B (restoran/katering/pasar), peternak mitra potensial, dinas/regulator perkoperasian, dan masyarakat umum |
+| **Halaman yang Dibutuhkan** | 1. **Beranda (`/`)**: Hero, ringkasan profil, komoditas unggulan, angka capaian/kapasitas, CTA kemitraan<br>2. **Profil (`/profil`)**: Sejarah singkat, visi & misi, nilai inti, legalitas & perizinan koperasi<br>3. **Usaha (`/usaha`)**: Alur produksi ayam broiler, kapasitas kandang/panen, standar mutu & biosecurity, skema kemitraan peternak<br>4. **Keorganisasian (`/organisasi`)**: Bagan struktur organisasi, dewan pengawas, pengurus inti, pengelola teknis<br>5. **Galeri (`/galeri`)**: Dokumentasi fasilitas kandang modern, kegiatan operasional, panen, temu anggota<br>6. **Kontak (`/kontak`)**: Informasi kantor/kandang, formulir pesan, peta Google Maps, direct link WhatsApp |
+| **Fitur Khusus (MVP)** | - Floating action button WhatsApp untuk komunikasi instan<br>- Formulir kontak terintegrasi (client-side validation + direct WhatsApp formatting & mailto fallback)<br>- Peta Google Maps embed interaktif<br>- Galeri foto responsif dengan viewer/lightbox |
+| **Bahasa Situs** | Bahasa Indonesia (ID) |
+| **Kesiapan Konten** | Menggunakan *placeholder terstandar* berlabel jelas untuk teks deskripsi, foto kandang/kegiatan, logo, dan profil pengurus sampai diserahkan saat konten review |
+| **Identitas Visual** | Mengikuti arahan `docs/02-DESIGN.md` (warm cream canvas `#f8f8f2`, studio ink `#1a1a1a`, card white `#ffffff`) dipadukan dengan aksen hijau pangan/pertanian modern (Agri Green `#166534`) yang restrained |
+| **Domain & Hosting** | Vercel (Hobby tier / Free deployment) |
+| **Pengelola Konten** | Pemilik proyek (kode sumber modular & file konfigurasi konten terpusat) |
+| **Budget & Waktu** | Budget: Rp 0 (Free-tier stack) \| Deadline: Akhir minggu ini |
+| **Teknologi Pilihan** | Next.js (App Router, Static Export), TypeScript, Tailwind CSS, shadcn/ui, Lucide Icons |
+
+---
+
+## 3. Daftar Asumsi
+
+- `[ASUMSI-01]` Fitur **Blog** dan kemampuan **Multi-bahasa (ID/EN)** ditunda dan diposisikan sebagai backlog untuk Fase 2 pasca peluncuran akhir minggu ini.
+- `[ASUMSI-02]` Seluruh data legalitas (Nomor Induk Berusaha / NIB, Akta Pendirian, AHU Kemenkop) dan susunan pengurus menggunakan data placeholder terstruktur yang mudah diganti pada 1 file konfigurasi konten.
+- `[ASUMSI-03]` Aset fotografi ayam broiler, kandang closed house/modern, dan kegiatan operasional menggunakan kurasi foto bebas royalti (Unsplash/Pexels) dengan rasio aspek konsisten (16:9 dan 4:3) sebelum digantikan foto asli koperasi.
+- `[ASUMSI-04]` Penanganan formulir kontak pada mode Static Export Vercel diutamakan memanfaatkan redirect direct WhatsApp message dan action email (`mailto:`) agar 100% stabil tanpa memerlukan backend database terpisah.
+
+---
+
+## 4. Risiko Utama & Mitigasi
+
+| Risiko | Dampak | Strategi Mitigasi |
+|---|---|---|
+| **1. Keterlambatan Konten & Foto Riil** | Situs tampak generik jika konten asli belum siap menjelang deadline | Menerapkan arsitektur data terpusat (`content/site-data.ts`). Seluruh teks, nomor kontak, dan path gambar dipusatkan di satu file sehingga pemilik proyek dapat memperbarui konten tanpa menyentuh kode komponen UI. |
+| **2. Batasan Waktu Rilis (Akhir Minggu Ini)** | Risiko over-engineering dan pekerjaan tidak tuntas | Menjaga arsitektur tetap lean: Static Export murni (tanpa server complex), tidak ada dependensi database pihak ketiga, dan fokus penuh pada 6 rute halaman utama. |
+| **3. Performa & Bobot Gambar** | Gambar galeri dan fasilitas kandang dapat memperlambat loading situs | Menggunakan format WebP/AVIF modern, optimasi ukuran resolusi, serta lazy-loading bawaan Next.js Image atau image tags statis. |
+| **4. Aksesibilitas di Layar Seluler** | Mayoritas calon mitra/pengunjung mengakses lewat smartphone/WhatsApp | Desain menerapkan pendekatan *Mobile-First* dengan target Lighthouse Mobile ≥ 90 dan kemudahan akses satu tombol ke WhatsApp. |

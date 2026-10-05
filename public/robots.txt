@@ -1,0 +1,8 @@
+# robots.txt untuk Koperasi Produsen Dirga Pangan Mandiri
+# https://dirgapangan.id
+
+User-agent: *
+Allow: /
+
+# Sitemap Index
+Sitemap: https://dirgapangan.id/sitemap.xml

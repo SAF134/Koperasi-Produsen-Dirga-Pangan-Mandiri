@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f1f5f2" />
+      <stop offset="50%" stop-color="#e2e8e4" />
+      <stop offset="100%" stop-color="#d4ded7" />
+    </linearGradient>
+    <linearGradient id="silhouetteGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#166534" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#1a1a1a" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glowGrad" cx="50%" cy="35%" r="45%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="750" fill="url(#bgGrad)" />
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.08" stroke="#166534" stroke-width="1.5">
+    <line x1="0" y1="150" x2="600" y2="150" />
+    <line x1="0" y1="300" x2="600" y2="300" />
+    <line x1="0" y1="450" x2="600" y2="450" />
+    <line x1="0" y1="600" x2="600" y2="600" />
+    <line x1="150" y1="0" x2="150" y2="750" />
+    <line x1="300" y1="0" x2="300" y2="750" />
+    <line x1="450" y1="0" x2="450" y2="750" />
+  </g>
+
+  <!-- Ambient light glow -->
+  <circle cx="300" cy="280" r="220" fill="url(#glowGrad)" />
+
+  <!-- Silhouette Head -->
+  <circle cx="300" cy="270" r="105" fill="url(#silhouetteGrad)" />
+
+  <!-- Silhouette Shoulders & Torso -->
+  <path d="M 120,620 C 130,470 200,430 260,420 L 340,420 C 400,430 470,470 480,620 C 485,670 470,750 470,750 L 130,750 C 130,750 115,670 120,620 Z" fill="url(#silhouetteGrad)" />
+
+  <!-- Camera / Placeholder badge -->
+  <g transform="translate(245, 630)">
+    <rect x="0" y="0" width="110" height="40" rx="20" fill="#166534" opacity="0.85" />
+    <!-- Camera icon -->
+    <path d="M 32,23 C 32,21.5 33,20 34.5,20 L 37.5,20 L 39.5,17.5 L 45.5,17.5 L 47.5,20 L 50.5,20 C 52,20 53,21.5 53,23 L 53,30 C 53,31.5 52,32.5 50.5,32.5 L 34.5,32.5 C 33,32.5 32,31.5 32,30 Z" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round" />
+    <circle cx="42.5" cy="26" r="3.5" fill="none" stroke="#ffffff" stroke-width="1.8" />
+    <!-- Text -->
+    <text x="62" y="25" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" letter-spacing="0.5">FOTO</text>
+  </g>
+
+  <!-- Decorative border ring -->
+  <rect x="8" y="8" width="584" height="734" rx="16" fill="none" stroke="#166534" stroke-opacity="0.15" stroke-width="2" stroke-dasharray="8 6" />
+</svg>

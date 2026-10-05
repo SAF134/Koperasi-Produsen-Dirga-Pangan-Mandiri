@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Color Tokens based on docs/02-DESIGN.md */
+    --color-canvas: #d8d8d8;
+    --color-surface: #ffffff;
+    --color-ink: #1a1a1a;
+    --color-muted-ink: #525252;
+    --color-border: #166534;
+    --color-border-dark: #1a1a1a;
+    --color-agri-green: #166534;
+    --color-agri-light: #e8f5e9;
+    --color-status-green: #10b981;
+    --color-wa: #25d366;
+  }
+
+  * {
+    border-color: var(--color-border);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--color-ink);
+    background-color: var(--color-canvas);
+    min-height: 100vh;
+    overflow-x: hidden;
+    max-width: 100vw;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #a4f4cf;
+    color: #1a1a1a;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@layer components {
+  /* Penguatan garis border tebal untuk elemen kartu */
+  .rounded-card,
+  [class*="rounded-card"] {
+    border-width: 2px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
