@@ -63,21 +63,24 @@ export default function ContactPage() {
             </ol>
           </nav>
 
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-surface px-3 py-1 text-xs font-semibold uppercase tracking-wider text-agri-green mb-4">
-              <span className="h-1.5 w-1.5 rounded-full bg-agri-green" aria-hidden="true" />
-              Komunikasi Resmi
+          <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
+            <span className="inline-flex items-center gap-2 rounded-full border-2 border-agri-green/30 bg-surface px-4 py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-agri-green shadow-xs hover:border-agri-green hover:shadow-card transition-all duration-200 mb-4">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-agri-green opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-agri-green" />
+              </span>
+              <span>Komunikasi Resmi</span>
             </span>
 
             {/* Exactly 1 H1 on page */}
             <h1
               id="contact-heading"
-              className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl text-balance"
+              className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl text-balance text-center"
             >
               {contactContent.header.title}
             </h1>
 
-            <p className="mt-4 text-base sm:text-lg text-muted-ink leading-relaxed text-justify">
+            <p className="mt-4 text-base sm:text-lg text-muted-ink leading-relaxed text-center max-w-2xl mx-auto">
               {contactContent.header.subtitle}
             </p>
           </div>
@@ -144,7 +147,7 @@ export default function ContactPage() {
                   <div className="rounded-card border border-border bg-canvas p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 hover:border-agri-green/60 transition-all duration-300">
                     <div className="flex items-center gap-2 text-agri-green mb-2">
                       <Phone className="h-4 w-4" aria-hidden="true" />
-                      <span className="text-xs font-semibold">WhatsApp Resmi</span>
+                      <span className="text-xs font-semibold">WhatsApp</span>
                     </div>
                     <a
                       href={whatsappUrl}
@@ -215,17 +218,21 @@ export default function ContactPage() {
         aria-labelledby="map-heading"
       >
         <Container>
-          <div className="mb-8">
-            <span className="text-xs font-semibold uppercase tracking-wider text-agri-green block mb-1">
-              Petunjuk Navigasi
+          <div className="flex flex-col items-center text-center mb-10 max-w-3xl mx-auto">
+            <span className="inline-flex items-center gap-2 rounded-full border-2 border-agri-green/30 bg-surface px-4 py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-agri-green shadow-xs hover:border-agri-green hover:shadow-card transition-all duration-200 mb-3.5">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-agri-green opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-agri-green" />
+              </span>
+              <span>Petunjuk Navigasi</span>
             </span>
             <h2
               id="map-heading"
-              className="text-2xl sm:text-3xl font-bold tracking-tight text-ink"
+              className="text-2xl sm:text-3xl font-bold tracking-tight text-ink text-center"
             >
               Peta Lokasi Sentra Koperasi
             </h2>
-            <p className="mt-2 text-sm text-muted-ink text-justify">
+            <p className="mt-2 text-sm text-muted-ink text-center max-w-xl">
               Titik lokasi sentra peternakan closed house di kawasan sentra unggas Jawa Barat, Indonesia.
             </p>
           </div>

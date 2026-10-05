@@ -28,13 +28,12 @@ export interface ValuePillar {
   readonly iconName: string;
 }
 
-export interface CommodityItem {
+export interface BusinessUnit {
   readonly id: string;
   readonly name: string;
+  readonly type: "Usaha Utama" | "Usaha Pendukung" | "Usaha Tambahan";
   readonly category: string;
-  readonly weightRange: string;
-  readonly description: string;
-  readonly highlights: readonly string[];
+  readonly imageUrl: string;
 }
 
 export interface LegalCredential {
@@ -50,42 +49,17 @@ export interface CoreValue {
   readonly description: string;
 }
 
-export interface BiosecurityPrinciple {
-  readonly step: number;
-  readonly title: string;
-  readonly description: string;
-}
-
-export interface TechFeature {
-  readonly title: string;
-  readonly description: string;
-}
-
-export interface PartnershipStep {
-  readonly step: number;
-  readonly title: string;
-  readonly description: string;
-}
-
-export interface FaqItem {
-  readonly question: string;
-  readonly answer: string;
-}
-
 export interface PersonProfile {
   readonly name: string;
+  readonly category: "Pengurus" | "Pengawas" | "Pendiri";
   readonly role: string;
-  readonly category: "Pengurus" | "Pengawas" | "Anggota";
-  readonly department: string;
-  readonly bio?: string;
   readonly imageUrl: string;
-  readonly avatarPlaceholder?: string;
 }
 
 export interface GalleryItem {
   readonly id: string;
   readonly title: string;
-  readonly category: "Fasilitas Kandang" | "Proses Panen" | "Kegiatan Anggota";
+  readonly category: "Fasilitas Usaha" | "Proses Usaha" | "Kegiatan Anggota";
   readonly imageUrl: string;
   readonly aspect: "16:9" | "4:3";
   readonly date: string;
@@ -138,11 +112,11 @@ export const contactData = {
     full: "Jalan Ahmad Yani II Nomor 18, Tanah Sareal, Kota Bogor, Jawa Barat, Indonesia",
   },
   farmCenter: {
-    title: "Sentra Fasilitas Kandang Closed House",
+    title: "Sentra Fasilitas Usaha Closed House",
     location: "Jawa Barat, Indonesia",
-    full: "Sentra Fasilitas Kandang Closed House, Jawa Barat, Indonesia",
+    full: "Sentra Fasilitas Usaha Closed House, Jawa Barat, Indonesia",
   },
-  operatingHours: "Senin – Sabtu: 08.00 – 17.00 WIB",
+  operatingHours: "Senin – Jumat: 08.00 – 16.00 WIB",
   operatingHoursNote: "Hari Minggu & Hari Libur Nasional: Layanan Darurat Kemitraan via WhatsApp",
   coordinates: {
     lat: -6.570920909879735,
@@ -174,13 +148,13 @@ export const homeContent = {
     },
     image: {
       src: "/images/hero-koperasi.webp",
-      mobileSrc: "/images/hero-koperasi-mobile.webp",
-      fallbackSrc: "/images/hero-koperasi.jpg",
+      mobileSrc: "/images/hero-koperasi.webp",
+      fallbackSrc: "/images/hero-koperasi.webp",
       alt: "Fasilitas Sentra Kandang Closed House Koperasi Produsen Dirga Pangan Mandiri",
       badge: "Sentra Fasilitas Koperasi",
       tag: "Placeholder Foto Utama",
       title: "Sentra Koperasi Dirga Pangan",
-      caption: "Fasilitas Kandang Closed House Modern & Higienis",
+      caption: "Fasilitas Usaha Closed House Modern & Higienis",
       stats: "Kapasitas 50.000+ Ekor / Siklus • Biosecurity Terstandar",
     },
   },
@@ -229,50 +203,6 @@ export const homeContent = {
       description: "Komitmen pemberdayaan peternak rakyat lokal",
     },
   ] as readonly MetricItem[],
-  commoditiesOverview: {
-    title: "Komoditas Unggulan Koperasi",
-    subtitle:
-      "Ayam broiler sehat berbobot standar dan karkas segar higienis dengan penanganan rantai dingin terpadu.",
-    items: [
-      {
-        id: "live-bird",
-        name: "Ayam Broiler Hidup (Live Bird)",
-        category: "Produksi Ternak",
-        weightRange: "1,8 kg – 2,2 kg",
-        description:
-          "Ayam hidup sehat berkualitas super dengan konversi pakan (FCR) optimal, bulu bersih, dan siap panen dari kandang closed house.",
-        highlights: [
-          "Bebas residu antibiotik berbahaya",
-          "Kondisi fisik prima dan aktif",
-          "Penimbangan akurat dan transparan",
-        ],
-      },
-      {
-        id: "fresh-carcass",
-        name: "Karkas Ayam Segar Higienis",
-        category: "Produk Olahan Potong",
-        weightRange: "0,8 kg – 1,4 kg (Karkas Bersih)",
-        description:
-          "Daging ayam karkas segar tanpa jeroan dan bulu, diproses secara higienis, bersih, dan dijaga suhunya dalam rantai dingin.",
-        highlights: [
-          "Pemotongan higienis dan terstandar",
-          "Kemasan bersih kedap kontaminasi",
-          "Siap kirim ke jaringan horeka & katering",
-        ],
-      },
-    ] as readonly CommodityItem[],
-  },
-  governanceQuote: {
-    quote:
-      "Kedaulatan pangan bangsa dimulai dari kemandirian peternak rakyat yang terorganisir secara profesional, transparan, dan berkeadilan.",
-    attribution: "Dewan Pengurus Koperasi Dirga Pangan Mandiri",
-  },
-  ctaBanner: {
-    title: "Siap Menjadi Mitra Pasokan Atau Peternak Plasma?",
-    description:
-      "Hubungi tim kemitraan kami sekarang untuk mendiskusikan kebutuhan pasokan rutin karkas usaha Anda atau bergabung dalam program kemitraan kandang modern.",
-    ctaLabel: "Hubungi Divisi Kemitraan via WhatsApp",
-  },
 } as const;
 
 // ==========================================
@@ -294,14 +224,24 @@ export const profileContent = {
   },
   visionMission: {
     vision:
-      "Menjadi koperasi produsen perunggasan terdepan dan terpercaya di Indonesia yang mewujudkan kedaulatan peternak rakyat serta kemandirian pasokan pangan hewani berkualitas.",
+      "Menjadi Koperasi Produsen Dirga Pangan Mandiri yang kuat, profesional dan terintegrasi secara horizontal dalam membangun ekosistem peternakan dan pangan berkelanjutan.",
     missions: [
-      "Menyediakan sapronak (bibit DOC, pakan berkualitas, obat-obatan) unggul dengan efisiensi biaya bagi seluruh peternak mitra.",
-      "Mendorong modernisasi kandang melalui adopsi teknologi closed house dan sistem biosecurity terstandar yang ramah lingkungan.",
-      "Menjamin stabilitas pasar dan transparansi penyerapan hasil panen dengan skema kerja sama yang adil dan menguntungkan.",
-      "Menjalankan tata kelola koperasi yang bersih, akuntabel, dan mengutamakan peningkatan kesejahteraan anggota.",
+      "Mengembangkan usaha produksi pangan, khususnya peternakan Unggas dan usaha turunannya secara profesional dan berkelanjutan.",
+      "Mengintegrasikan kegiatan usaha anggota dari penyediaan sarana produksi, budidaya, pengolahan hingga pemasaran hasil.",
+      "Meningkatkan produktivitas, efisiensi dan daya saing usaha anggota.",
+      "Membantu anggota memperoleh akses terhadap sarana produksi, teknologi, manajemen, dan jaringan pemasaran.",
+      "Mengembangkan produk pangan dan hasil peternakan yang berkualitas serta bernilai tambah.",
+      "Menerapkan tata kelola koperasi yang profesional, transparan dan akuntabel.",
     ],
   },
+  objectives: [
+    "Meningkatkan kesejahteraan anggota pada khususnya dan masyarakat pada umumnya.",
+    "Membantu dan mengembangkan usaha anggota koperasi.",
+    "Meningkatkan kapasitas produksi dan produktivitas usaha peternakan Unggas.",
+    "Membuka akses pasar yang lebih luas bagi produk anggota.",
+    "Mengembangkan produk pangan dan hasil peternakan yang memiliki nilai tambah dan daya saing.",
+    "Mendukung ketahanan pangan serta pertumbuhan ekonomi masyarakat.",
+  ] as readonly string[],
   coreValues: [
     {
       title: "Integritas & Transparansi",
@@ -323,59 +263,33 @@ export const profileContent = {
   legalities: [
     {
       label: "Nomor Induk Berusaha (NIB)",
-      number: "1234567890123 [DRAFT]",
+      number: "1509260034865",
       status: "Terdaftar Resmi",
       issuer: "Kementerian Investasi / BKPM RI",
       description: "Legalitas perizinan berusaha berbasis risiko sektor peternakan unggas.",
     },
     {
       label: "SK Pengesahan Badan Hukum",
-      number: "AHU-0012345.AH.01.26.TAHUN 2024 [DRAFT]",
+      number: "AHU-0007590.AH.01.29.2026 ",
       status: "Disahkan",
       issuer: "Kementerian Hukum dan HAM RI",
       description: "Surat keputusan pengesahan pendirian badan hukum Koperasi Produsen.",
     },
     {
       label: "Akta Pendirian Koperasi",
-      number: "Akta Notaris No. 08 / 14 Mei 2024 [DRAFT]",
+      number: "Akta Notaris No. 10 / 14 September 2026 ",
       status: "Akta Otentik",
       issuer: "Notaris Pembuat Akta Koperasi (NPAK)",
       description: "Anggaran dasar dan pengesahan susunan kepengurusan awal koperasi.",
     },
     {
       label: "Izin Usaha Peternakan (IUP)",
-      number: "IUP-UNGGAS/2024/0089 [DRAFT]",
+      number: "IUP-UNGGAS/2026/0089 ",
       status: "Aktif",
       issuer: "Dinas Penanaman Modal & PTSP Daerah",
       description: "Izin operasional budidaya dan produksi ayam broiler terintegrasi.",
     },
   ] as readonly LegalCredential[],
-  biosecurity: {
-    title: "Standar Biosecurity & Kesejahteraan Ternak",
-    subtitle: "Empat pilar perlindungan preventif untuk menjamin kesehatan ayam dan lingkungan kandang yang steril.",
-    principles: [
-      {
-        step: 1,
-        title: "Zonasi & Isolasi Ketat",
-        description: "Pemisahan tegas zona kotor, antara, dan bersih di area kandang untuk meminimalkan transmisi agen patogen dari luar.",
-      },
-      {
-        step: 2,
-        title: "Sanitasi & Disinfeksi Kendaraan",
-        description: "Setiap kendaraan pengangkut pakan, DOC, dan panen wajib melewati bak dipping disinfektan dan penyemprotan menyeluruh.",
-      },
-      {
-        step: 3,
-        title: "Kontrol Kualitas Air & Pakan",
-        description: "Penggunaan air minum teruji laboratorium dengan klorinasi aman dan pakan berformulasi nutrisi lengkap terdaftar dinas.",
-      },
-      {
-        step: 4,
-        title: "Pemantauan Kesehatan Harian",
-        description: "Inspeksi rutin oleh tenaga teknis perunggasan bersertifikat untuk memantau performa flock dan pencegahan dini penyakit.",
-      },
-    ] as readonly BiosecurityPrinciple[],
-  },
 } as const;
 
 // ==========================================
@@ -384,113 +298,141 @@ export const profileContent = {
 
 export const businessContent = {
   header: {
-    title: "Kapasitas Produksi & Skema Kemitraan",
-    subtitle: "Pasokan ayam broiler berkualitas prima dengan otomasi tata kelola closed house modern.",
+    title: "Unit & Kegiatan Usaha Koperasi",
+    subtitle: "Portofolio kegiatan usaha Koperasi Produsen Dirga Pangan Mandiri yang terbagi dalam Usaha Utama, Usaha Pendukung, dan Usaha Tambahan.",
   },
-  supplyChain: {
-    title: "Rantai Pasok Unggas Dari Hulu ke Hilir",
-    description:
-      "Koperasi Dirga Pangan Mandiri mengelola ekosistem terpadu mulai dari penyediaan sarana produksi peternakan (sapronak), proses pemeliharaan modern, hingga distribusi panen ke mitra horeka dan pasar.",
-  },
-  products: [
+  mainBusinesses: [
     {
-      id: "live-bird",
-      name: "Ayam Broiler Hidup (Live Bird)",
-      category: "Komoditas Utama",
-      weightRange: "1,8 kg – 2,2 kg / ekor",
-      description:
-        "Ayam broiler hidup berkualitas prima dari kandang closed house. Memiliki rasio konversi pakan (FCR) yang efisien, tingkat deplesi rendah (< 3%), serta daya tahan transportasi yang tangguh.",
-      highlights: [
-        "Kondisi bulu bersih dan tidak berbau pekat",
-        "Kepadatan daging optimal dan padat berisi",
-        "Siap kirim ke Rumah Potong Hewan Unggas (RPHU)",
-      ],
+      id: "main-01",
+      name: "Budi Daya Ayam Ras Pedaging",
+      type: "Usaha Utama",
+      category: "Budidaya Peternakan",
+      imageUrl: "/images/placeholder.png",
     },
     {
-      id: "fresh-carcass",
-      name: "Karkas Ayam Segar Higienis",
-      category: "Pasokan Horeka & Ritel",
-      weightRange: "0,8 kg – 1,4 kg / karkas",
-      description:
-        "Karkas ayam segar dingin (chilled) tanpa jeroan, kepala, dan cakar. Diproses dengan standar kebersihan tinggi dan disimpan dalam cold chain 0–4°C untuk menjamin kesegaran maksimal saat tiba di dapur mitra.",
-      highlights: [
-        "Diproses secara higienis dan terstandar",
-        "Tanpa bahan pengawet atau suntikan air",
-        "Pilihan potong kustom (parting 4, 8, atau 10 potong)",
-      ],
-    },
-  ] as readonly CommodityItem[],
-  technology: {
-    title: "Teknologi Kandang Closed House",
-    description:
-      "Sistem kandang tertutup modern menciptakan iklim mikro buatan yang ideal bagi pertumbuhan ayam broiler, terlindung dari cuaca ekstrem luar dan kontaminasi udara luar.",
-    features: [
-      {
-        title: "Pengendali Mikroklimat Otomatis",
-        description: "Sensor suhu dan kelembapan mengatur kecepatan kipas dan tirai secara cerdas 24/7.",
-      },
-      {
-        title: "Evaporative Cooling Pad",
-        description: "Bantalan pendingin air menurunkan suhu udara masuk secara efisien dan merata.",
-      },
-      {
-        title: "Ventilasi Tunnel Fan",
-        description: "Kipas exhaust berdaya tinggi memastikan sirkulasi oksigen segar dan membuang gas amonia.",
-      },
-      {
-        title: "Sistem Tempat Minum Nipple Otomatis",
-        description: "Penyaluran air minum tertutup mencegah kontaminasi bakteri dan menjaga litter tetap kering.",
-      },
-    ] as readonly TechFeature[],
-  },
-  partnership: {
-    title: "Alur 4 Langkah Kemitraan Peternak Plasma",
-    subtitle: "Model kerja sama adil yang memberikan kepastian sapronak, pendampingan teknis, dan jaminan penyerapan panen.",
-    steps: [
-      {
-        step: 1,
-        title: "Registrasi & Verifikasi Lahan",
-        description: "Calon peternak mendaftarkan lokasi kandang untuk ditinjau kelayakan teknis, akses jalan, dan sumber air bersih oleh tim koperasi.",
-      },
-      {
-        step: 2,
-        title: "Penyediaan Sapronak Terstandar",
-        description: "Koperasi menyuplai Day Old Chick (DOC) strain unggul, pakan pabrikan bermutu, serta vitamin/vaksin lengkap ke lokasi peternak.",
-      },
-      {
-        step: 3,
-        title: "Pendampingan Pemeliharaan Intensif",
-        description: "Technical Service (TS) koperasi melakukan kunjungan rutin berkala untuk memandu manajemen suhu, ventilasi, dan biosecurity.",
-      },
-      {
-        step: 4,
-        title: "Pemanenan & Pembayaran Hasil Usaha",
-        description: "Seluruh hasil panen ayam hidup ditimbang secara transparan di kandang dan diserap koperasi dengan perhitungan bagi hasil yang adil.",
-      },
-    ] as readonly PartnershipStep[],
-  },
-  faqs: [
-    {
-      question: "Berapa minimal pemesanan ayam broiler untuk pasokan restoran atau katering?",
-      answer: "Minimal pemesanan awal untuk pasokan rutin mitra horeka adalah 50 ekor untuk ayam hidup atau 50 kg untuk karkas segar. Kami menyediakan jadwal pengiriman berkala sesuai kebutuhan dapur Anda.",
+      id: "main-02",
+      name: "Budi Daya Ayam Ras Petelur",
+      type: "Usaha Utama",
+      category: "Budidaya Peternakan",
+      imageUrl: "/images/placeholder.png",
     },
     {
-      question: "Bagaimana sistem pengiriman pasokan karkas?",
-      answer: "Pengiriman karkas menggunakan boks berinsulasi dingin (cold box) untuk menjaga suhu daging tetap stabil di bawah 4°C selama perjalanan dari sentra ke lokasi Anda.",
+      id: "main-03",
+      name: "Budi Daya Ayam Lokal dan Persilangan",
+      type: "Usaha Utama",
+      category: "Budidaya Peternakan",
+      imageUrl: "/images/placeholder.png",
     },
     {
-      question: "Apa syarat utama untuk bermitra sebagai peternak plasma koperasi?",
-      answer: "Syarat utama meliputi memiliki kandang closed house (atau semi-closed) dengan kapasitas minimal 5.000 ekor, ketersediaan air bersih dan listrik memadai, serta komitmen mengikuti SOP biosecurity koperasi.",
+      id: "main-04",
+      name: "Perdagangan Besar Mesin, Peralatan, dan Perlengkapan Pertanian",
+      type: "Usaha Utama",
+      category: "Sarana Produksi",
+      imageUrl: "/images/placeholder.png",
     },
     {
-      question: "Apakah peternak plasma harus membayar bibit dan pakan di awal?",
-      answer: "Tidak. Dalam skema kemitraan plasma terpadu, modal sapronak (DOC, pakan, obat) difasilitasi oleh koperasi dan diperhitungkan secara transparan saat hasil panen dipasarkan.",
+      id: "main-05",
+      name: "Perdagangan Besar Binatang Hidup",
+      type: "Usaha Utama",
+      category: "Perdagangan Ternak",
+      imageUrl: "/images/placeholder.png",
     },
     {
-      question: "Apakah koperasi melayani pembelian eceran masyarakat?",
-      answer: "Fokus utama koperasi saat ini adalah kemitraan B2B (distributor, pasar induk, hotel, restoran, dan katering) serta penyediaan karkas partai untuk acara perhelatan.",
+      id: "main-06",
+      name: "Perdagangan Besar Hasil Pertanian dan Hewan Hidup Lainnya",
+      type: "Usaha Utama",
+      category: "Perdagangan Komoditas",
+      imageUrl: "/images/placeholder.png",
     },
-  ] as readonly FaqItem[],
+    {
+      id: "main-07",
+      name: "Perdagangan Besar Telur dan Hasil Olahan Telur",
+      type: "Usaha Utama",
+      category: "Hasil Olahan Ternak",
+      imageUrl: "/images/placeholder.png",
+    },
+  ] as readonly BusinessUnit[],
+  supportingBusinesses: [
+    {
+      id: "sup-01",
+      name: "Pengolahan dan Pengawetan Daging dan Produk Daging",
+      type: "Usaha Pendukung",
+      category: "Industri Pengolahan",
+      imageUrl: "/images/placeholder.png",
+    },
+    {
+      id: "sup-02",
+      name: "Kegiatan Rumah Potong Unggas",
+      type: "Usaha Pendukung",
+      category: "Jasa RPHU Higienis",
+      imageUrl: "/images/placeholder.png",
+    },
+    {
+      id: "sup-03",
+      name: "Perdagangan Besar Daging Ayam dan Daging Ayam Olahan",
+      type: "Usaha Pendukung",
+      category: "Distribusi Rantai Dingin",
+      imageUrl: "/images/placeholder.png",
+    },
+    {
+      id: "sup-04",
+      name: "Industri Makanan dan Masakan Olahan",
+      type: "Usaha Pendukung",
+      category: "Manufaktur Pangan",
+      imageUrl: "/images/placeholder.png",
+    },
+    {
+      id: "sup-05",
+      name: "Pendidikan Lainnya Swasta",
+      type: "Usaha Pendukung",
+      category: "Pelatihan & Edukasi",
+      imageUrl: "/images/placeholder.png",
+    },
+  ] as readonly BusinessUnit[],
+  additionalBusinesses: [
+    {
+      id: "add-01",
+      name: "Aktivitas Remediasi dan Pengelolaan Limbah atau Sampah Lainnya",
+      type: "Usaha Tambahan",
+      category: "Pengelolaan Lingkungan",
+      imageUrl: "/images/placeholder.png",
+    },
+    {
+      id: "add-02",
+      name: "Industri Pupuk Hara Makro Primer Lainnya",
+      type: "Usaha Tambahan",
+      category: "Manufaktur Pupuk",
+      imageUrl: "/images/placeholder.png",
+    },
+    {
+      id: "add-03",
+      name: "Industri Pupuk Organik, Pupuk Hayati, dan Media Tanam",
+      type: "Usaha Tambahan",
+      category: "Pupuk Organik & Hayati",
+      imageUrl: "/images/placeholder.png",
+    },
+    {
+      id: "add-04",
+      name: "Angkutan Bermotor untuk Barang Umum",
+      type: "Usaha Tambahan",
+      category: "Logistik & Transportasi",
+      imageUrl: "/images/placeholder.png",
+    },
+    {
+      id: "add-05",
+      name: "Aktivitas Jasa Boga untuk Acara Tertentu (Event Catering)",
+      type: "Usaha Tambahan",
+      category: "Jasa Boga & Katering",
+      imageUrl: "/images/placeholder.png",
+    },
+    {
+      id: "add-06",
+      name: "Aktivitas Pemberian Kredit oleh Koperasi Konvensional",
+      type: "Usaha Tambahan",
+      category: "Permodalan Koperasi",
+      imageUrl: "/images/placeholder.png",
+    },
+  ] as readonly BusinessUnit[],
 } as const;
 
 // ==========================================
@@ -502,105 +444,196 @@ export const organizationContent = {
     title: "Struktur Tata Kelola Koperasi",
     subtitle: "Berlandaskan musyawarah anggota, transparansi pembukuan, dan akuntabilitas kepemimpinan.",
   },
-  structureIntro:
-    "Sebagai badan hukum koperasi produsen, kekuasaan tertinggi berada di tangan Rapat Anggota Tahunan (RAT). Dewan Pengawas bertugas mengawasi jalannya roda usaha, sementara Dewan Pengurus memimpin eksekusi program kemitraan didukung oleh tim teknis profesional.",
-  supervisors: [
-    {
-      name: "Drs. H. Mulyadi, M.M. [DRAFT]",
-      role: "Ketua Dewan Pengawas",
+  pengurus: {
+    ketua: {
+      name: "Setya Winarno",
+      category: "Pengurus",
+      role: "Ketua",
+      imageUrl: "/images/placeholder_person.png",
+    } as PersonProfile,
+    officers: [
+      {
+        name: "Ajar Widoyoko",
+        category: "Pengurus",
+        role: "Wakil Ketua Bidang Organisasi",
+        imageUrl: "/images/placeholder_person.png",
+      },
+      {
+        name: "Mohamad Mansyur",
+        category: "Pengurus",
+        role: "Wakil Ketua Bidang Usaha",
+        imageUrl: "/images/placeholder_person.png",
+      },
+      {
+        name: "Robiatun Nazilah",
+        category: "Pengurus",
+        role: "Sekretaris",
+        imageUrl: "/images/placeholder_person.png",
+      },
+      {
+        name: "Aurum Fitrisari Sakti",
+        category: "Pengurus",
+        role: "Wakil Sekretaris",
+        imageUrl: "/images/placeholder_person.png",
+      },
+      {
+        name: "Rohmad Susilowarno",
+        category: "Pengurus",
+        role: "Bendahara",
+        imageUrl: "/images/placeholder_person.png",
+      },
+      {
+        name: "Farhan Satrio Yudanto",
+        category: "Pengurus",
+        role: "Wakil Bendahara",
+        imageUrl: "/images/placeholder_person.png",
+      },
+    ] as readonly PersonProfile[],
+  },
+  pengawas: {
+    ketua: {
+      name: "Tri Hardiyanto",
       category: "Pengawas",
-      department: "Pengawasan Tata Kelola & Audit",
-      bio: "Praktisi perkoperasian senior dengan pengalaman lebih dari 20 tahun membina kelembagaan usaha bersama di Jawa Barat.",
-      imageUrl: "/images/placeholder-person.svg",
-      avatarPlaceholder: "HM",
+      role: "Ketua",
+      imageUrl: "/images/placeholder_person.png",
+    } as PersonProfile,
+    members: [
+      {
+        name: "Muslikhin Irmat",
+        category: "Pengawas",
+        role: "Anggota",
+        imageUrl: "/images/placeholder_person.png",
+      },
+      {
+        name: "Indra Aquarius",
+        category: "Pengawas",
+        role: "Anggota",
+        imageUrl: "/images/placeholder_person.png",
+      },
+    ] as readonly PersonProfile[],
+  },
+  pendiri: [
+    {
+      name: "Setya Winarno",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
     },
     {
-      name: "Ir. Hendra Gunawan [DRAFT]",
-      role: "Anggota Dewan Pengawas",
-      category: "Pengawas",
-      department: "Pengawasan Teknis & Aset Kandang",
-      bio: "Pakar agribisnis peternakan yang fokus pada evaluasi kelayakan aset kandang dan keberlanjutan investasi kemitraan.",
-      imageUrl: "/images/placeholder-person.svg",
-      avatarPlaceholder: "HG",
-    },
-  ] as readonly PersonProfile[],
-  boardMembers: [
-    {
-      name: "Ahmad Sulaeman, S.Pt. [DRAFT]",
-      role: "Ketua Koperasi",
-      category: "Pengurus",
-      department: "Pimpinan Eksekutif",
-      bio: "Sarjana Peternakan dengan rekam jejak memimpin peternakan closed house modern dan jejaring rantai pasok unggas regional.",
-      imageUrl: "/images/placeholder-person.svg",
-      avatarPlaceholder: "AS",
+      name: "Robiatun Nazilah",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
     },
     {
-      name: "Budi Santoso, S.E. [DRAFT]",
-      role: "Sekretaris Koperasi",
-      category: "Pengurus",
-      department: "Administrasi & Legal Kemitraan",
-      bio: "Mengelola korespondensi hukum kelembagaan, registrasi anggota peternak, dan perjanjian kerja sama bisnis B2B.",
-      imageUrl: "/images/placeholder-person.svg",
-      avatarPlaceholder: "BS",
+      name: "Rohmad Susilowarno",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
     },
     {
-      name: "Siti Rahmawati, S.Ak. [DRAFT]",
-      role: "Bendahara Koperasi",
-      category: "Pengurus",
-      department: "Keuangan & Akuntansi Kas",
-      bio: "Akuntan profesional yang memastikan tata kelola pembukuan kas koperasi berjalan transparan, tertib, dan siap diaudit.",
-      imageUrl: "/images/placeholder-person.svg",
-      avatarPlaceholder: "SR",
+      name: "Ajar Widoyoko",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
     },
     {
-      name: "Drh. Fahmi Ramadhan [DRAFT]",
-      role: "Manajer Teknis & Mutu",
-      category: "Pengurus",
-      department: "Kesehatan Hewan & Biosecurity",
-      bio: "Dokter hewan penanggung jawab kesehatan flock ayam, kepatuhan biosecurity, dan formulasi sanitasi kandang closed house.",
-      imageUrl: "/images/placeholder-person.svg",
-      avatarPlaceholder: "FR",
-    },
-  ] as readonly PersonProfile[],
-  members: [
-    {
-      name: "H. Dadang Supriatna [DRAFT]",
-      role: "Perwakilan Peternak Plasma",
-      category: "Anggota",
-      department: "Sentra Kemitraan Bogor",
-      bio: "Peternak mandiri closed house dengan kapasitas pemeliharaan aktif 15.000 ekor per siklus.",
-      imageUrl: "/images/placeholder-person.svg",
-      avatarPlaceholder: "DS",
+      name: "Mohamad Mansyur",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
     },
     {
-      name: "Wahyu Hidayat [DRAFT]",
-      role: "Perwakilan Peternak Plasma",
-      category: "Anggota",
-      department: "Sentra Kemitraan Subang",
-      bio: "Mitra peternak teladan dalam penerapan efisiensi pakan FCR dan kedisiplinan biosecurity.",
-      imageUrl: "/images/placeholder-person.svg",
-      avatarPlaceholder: "WH",
+      name: "Aurum Fitrisari Sakti",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
     },
     {
-      name: "Suryadi Pratama [DRAFT]",
-      role: "Anggota Peternak Mandiri",
-      category: "Anggota",
-      department: "Sentra Kemitraan Jawa Barat",
-      bio: "Penggerak kemandirian peternak rakyat dengan rekam jejak kemitraan unggas berkelanjutan.",
-      imageUrl: "/images/placeholder-person.svg",
-      avatarPlaceholder: "SP",
+      name: "Tuan Farhan Satrio Yudanto",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
     },
-  ] as readonly PersonProfile[],
-  technicalTeam: [
     {
-      name: "Agus Pratama, S.Pt. [DRAFT]",
-      role: "Koordinator Kemitraan Plasma",
-      category: "Pengurus",
-      department: "Layanan Teknis (TS)",
-      bio: "Mendampingi peternak anggota di lapangan mulai dari persiapan chick-in, pemantauan masa brooder, hingga pelaksanaan panen.",
-      imageUrl: "/images/placeholder-person.svg",
-      avatarPlaceholder: "AP",
+      name: "Tri Hardiyanto",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
     },
+    {
+      name: "Muslikhin Irmat",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
+    },
+    {
+      name: "Indra Aquarius",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
+    },
+    {
+      name: "Anita Herdiyati",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
+    },
+    {
+      name: "Ramadhana Dwi Putra Mandiri",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
+    },
+    {
+      name: "Aris Kumaidi",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
+    },
+    {
+      name: "Muhtar",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
+    },
+    {
+      name: "Faisal Adlan",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
+    },
+    {
+      name: "Fiki Rahaditya Putra",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
+    },
+    {
+      name: "Firlyana Mentari Datya Putri",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
+    },
+    {
+      name: "Imam Ali Suwarno",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
+    },
+    {
+      name: "Syauqi Akmal Fadhali",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/syauqi.jpg",
+    },
+    {
+      name: "Tema Panunggal",
+      category: "Pendiri",
+      role: "Pendiri",
+      imageUrl: "/images/placeholder_person.png",
+    },
+
   ] as readonly PersonProfile[],
   governanceCommitment: {
     title: "Komitmen Good Cooperative Governance",
@@ -611,7 +644,7 @@ export const organizationContent = {
       },
       {
         title: "Sistem Akuntansi Terbuka",
-        description: "Pencatatan keuangan berkala yang dapat diakses oleh anggota pengawas untuk menjamin integritas penggunaan dana koperasi.",
+        description: "Pencatatan keuangan berkala yang dapat diakses oleh dewan pengawas untuk menjamin integritas penggunaan dana koperasi.",
       },
       {
         title: "Distribusi Sisa Hasil Usaha (SHU) Adil",
@@ -630,13 +663,13 @@ export const galleryContent = {
     title: "Galeri Dokumentasi & Fasilitas",
     subtitle: "Bukti nyata standar fasilitas modern, operasional pemeliharaan, dan aktivitas anggota.",
   },
-  categories: ["Semua", "Fasilitas Kandang", "Proses Panen", "Kegiatan Anggota"] as const,
+  categories: ["Semua", "Fasilitas Usaha", "Proses Usaha", "Kegiatan Anggota"] as const,
   items: [
     {
       id: "gal-01",
-      title: "Fasilitas Kandang Closed House Modern",
-      category: "Fasilitas Kandang",
-      imageUrl: "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1200&q=80",
+      title: "Fasilitas Usaha Closed House Modern",
+      category: "Fasilitas Usaha",
+      imageUrl: "/images/placeholder.png",
       aspect: "16:9",
       date: "September 2024",
       description: "Tampak interior kandang closed house dengan sistem ventilasi tunnel dan pengaturan suhu otomatis.",
@@ -644,17 +677,17 @@ export const galleryContent = {
     {
       id: "gal-02",
       title: "Sistem Evaporative Cooling Pad",
-      category: "Fasilitas Kandang",
-      imageUrl: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1200&q=80",
-      aspect: "4:3",
+      category: "Fasilitas Usaha",
+      imageUrl: "/images/placeholder.png",
+      aspect: "16:9",
       date: "September 2024",
       description: "Bantalan pendingin evaporatif untuk menjaga kesejukan udara masuk kandang saat cuaca terik.",
     },
     {
       id: "gal-03",
       title: "Pemeriksaan Kesehatan Ayam Harian",
-      category: "Fasilitas Kandang",
-      imageUrl: "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=1200&q=80",
+      category: "Fasilitas Usaha",
+      imageUrl: "/images/placeholder.png",
       aspect: "16:9",
       date: "Oktober 2024",
       description: "Tim teknis melakukan inspeksi berkala terhadap pertumbuhan bobot dan keaktifan ayam broiler.",
@@ -662,17 +695,17 @@ export const galleryContent = {
     {
       id: "gal-04",
       title: "Penimbangan Bobot Panen Akurat",
-      category: "Proses Panen",
-      imageUrl: "https://images.unsplash.com/photo-1595246140625-573b715d11dc?auto=format&fit=crop&w=1200&q=80",
-      aspect: "4:3",
+      category: "Proses Usaha",
+      imageUrl: "/images/placeholder.png",
+      aspect: "16:9",
       date: "Oktober 2024",
       description: "Proses timbang panen di kandang mitra menggunakan timbangan digital terkalibrasi secara terbuka.",
     },
     {
       id: "gal-05",
       title: "Armada Distribusi Rantai Dingin",
-      category: "Proses Panen",
-      imageUrl: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80",
+      category: "Proses Usaha",
+      imageUrl: "/images/placeholder.png",
       aspect: "16:9",
       date: "November 2024",
       description: "Pengangkutan ayam karkas menggunakan boks berinsulasi higienis menuju jaringan mitra horeka.",
@@ -681,7 +714,7 @@ export const galleryContent = {
       id: "gal-06",
       title: "Musyawarah & Temu Anggota Peternak",
       category: "Kegiatan Anggota",
-      imageUrl: "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1200&q=80",
+      imageUrl: "/images/placeholder.png",
       aspect: "16:9",
       date: "November 2024",
       description: "Forum evaluasi siklus pemeliharaan dan sosialisasi program kemitraan terbaru bersama peternak plasma.",
@@ -690,8 +723,8 @@ export const galleryContent = {
       id: "gal-07",
       title: "Pelatihan Biosecurity & Sanitasi",
       category: "Kegiatan Anggota",
-      imageUrl: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80",
-      aspect: "4:3",
+      imageUrl: "/images/placeholder.png",
+      aspect: "16:9",
       date: "Desember 2024",
       description: "Pelatihan teknis pencegahan penyakit unggas yang dipandu oleh dokter hewan penanggung jawab mutu.",
     },
@@ -699,7 +732,7 @@ export const galleryContent = {
       id: "gal-08",
       title: "Kunjungan Koordinasi Dinas Koperasi",
       category: "Kegiatan Anggota",
-      imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80",
+      imageUrl: "/images/placeholder.png",
       aspect: "16:9",
       date: "Desember 2024",
       description: "Pendampingan dan peninjauan tata kelola administrasi koperasi oleh instansi pembina daerah.",
@@ -742,5 +775,5 @@ export const contactContent = {
 
 export const footerContent = {
   copyright: "© 2026 Koperasi Produsen Dirga Pangan Mandiri. Seluruh hak cipta dilindungi undang-undang.",
-  legalNote: "Badan Hukum Koperasi Produsen resmi terdaftar pada Kementerian Koperasi dan UKM Republik Indonesia.",
+  legalNote: "Badan Hukum Koperasi Produsen Dirga Pangan Mandiri resmi terdaftar pada Kementerian Hukum Republik Indonesia dengan Nomor SK AHU-0007590.AH.01.29.2026.",
 } as const;

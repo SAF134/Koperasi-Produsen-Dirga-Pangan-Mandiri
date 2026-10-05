@@ -6,7 +6,7 @@ import GalleryView from "@/components/sections/GalleryView";
 import { galleryContent } from "@/content/site-data";
 
 export const metadata: Metadata = {
-  title: "Galeri Fasilitas Kandang & Kegiatan",
+  title: "Galeri Fasilitas Usaha & Kegiatan",
   description:
     "Dokumentasi visual fasilitas kandang ayam closed house modern, proses panen higienis, dan aktivitas anggota Koperasi Dirga Pangan Mandiri.",
   alternates: {
@@ -45,21 +45,24 @@ export default function GalleryPage() {
             </ol>
           </nav>
 
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-surface px-3 py-1 text-xs font-semibold uppercase tracking-wider text-agri-green mb-4">
-              <span className="h-1.5 w-1.5 rounded-full bg-agri-green" aria-hidden="true" />
-              Dokumentasi Lapangan
+          <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
+            <span className="inline-flex items-center gap-2 rounded-full border-2 border-agri-green/30 bg-surface px-4 py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-agri-green shadow-xs hover:border-agri-green hover:shadow-card transition-all duration-200 mb-4">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-agri-green opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-agri-green" />
+              </span>
+              <span>Dokumentasi Lapangan</span>
             </span>
 
             {/* Exactly 1 H1 on page */}
             <h1
               id="gallery-heading"
-              className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl text-balance"
+              className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl text-balance text-center"
             >
               {galleryContent.header.title}
             </h1>
 
-            <p className="mt-4 text-base sm:text-lg text-muted-ink leading-relaxed text-justify">
+            <p className="mt-4 text-base sm:text-lg text-muted-ink leading-relaxed text-center max-w-2xl mx-auto">
               {galleryContent.header.subtitle}
             </p>
           </div>

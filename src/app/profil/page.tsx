@@ -57,21 +57,24 @@ export default function ProfilePage() {
             </ol>
           </nav>
 
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-surface px-3 py-1 text-xs font-semibold uppercase tracking-wider text-agri-green mb-4">
-              <span className="h-1.5 w-1.5 rounded-full bg-agri-green" aria-hidden="true" />
-              Tentang Koperasi
+          <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
+            <span className="inline-flex items-center gap-2 rounded-full border-2 border-agri-green/30 bg-surface px-4 py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-agri-green shadow-xs hover:border-agri-green hover:shadow-card transition-all duration-200 mb-4">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-agri-green opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-agri-green" />
+              </span>
+              <span>Tentang Koperasi</span>
             </span>
 
             {/* Exactly 1 H1 on page */}
             <h1
               id="profile-heading"
-              className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl text-balance"
+              className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl text-balance text-center"
             >
               {profileContent.header.title}
             </h1>
 
-            <p className="mt-4 text-base sm:text-lg text-muted-ink leading-relaxed text-justify">
+            <p className="mt-4 text-base sm:text-lg text-muted-ink leading-relaxed text-center max-w-2xl mx-auto">
               {profileContent.header.subtitle}
             </p>
           </div>
@@ -88,8 +91,12 @@ export default function ProfilePage() {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
             <div className="lg:col-span-7">
-              <span className="text-xs font-semibold uppercase tracking-wider text-agri-green block mb-2">
-                Asal Usul & Cita-Cita
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-agri-green/30 bg-canvas px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-agri-green shadow-xs mb-3">
+                <span className="relative flex h-2 w-2" aria-hidden="true">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-agri-green opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-agri-green" />
+                </span>
+                <span>Asal Usul & Cita-Cita</span>
               </span>
               <h2
                 id="story-heading"
@@ -190,10 +197,53 @@ export default function ProfilePage() {
       </section>
 
       {/* ========================================================= */}
-      {/* 4. NILAI-NILAI INTI (CORE VALUES)                          */}
+      {/* 4. TUJUAN KOPERASI                                        */}
       {/* ========================================================= */}
       <section
         className="py-16 sm:py-24 border-b border-border bg-surface"
+        aria-labelledby="objectives-heading"
+      >
+        <Container>
+          <SectionHeading
+            id="objectives-heading"
+            eyebrow="Sasaran Pokok"
+            title="Tujuan Koperasi"
+            description="Enam sasaran strategis Koperasi Produsen Dirga Pangan Mandiri dalam menggerakkan ekonomi bersama dan memperkuat ketahanan pangan."
+          />
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {profileContent.objectives.map((objective, idx) => (
+              <div
+                key={idx}
+                className="group flex flex-col justify-between rounded-card border-2 border-border bg-canvas p-6 sm:p-7 shadow-card hover:shadow-card-hover hover:-translate-y-1 hover:border-agri-green/60 transition-all duration-300"
+              >
+                <div>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-agri-light border border-agri-green/20 text-agri-green font-extrabold text-sm mb-4 shadow-xs transition-transform duration-200 group-hover:scale-110">
+                    0{idx + 1}
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-agri-green mb-1.5 block">
+                    Tujuan {idx + 1}
+                  </span>
+                  <p className="text-sm sm:text-base text-ink font-semibold leading-relaxed text-justify sm:text-left">
+                    {objective}
+                  </p>
+                </div>
+
+                <div className="mt-5 pt-4 border-t border-border/80 flex items-center gap-2 text-xs font-medium text-muted-ink">
+                  <CheckCircle2 className="h-4 w-4 text-agri-green shrink-0" aria-hidden="true" />
+                  <span>Komitmen Berkelanjutan</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ========================================================= */}
+      {/* 5. NILAI-NILAI INTI (CORE VALUES)                          */}
+      {/* ========================================================= */}
+      <section
+        className="py-16 sm:py-24 border-b border-border bg-canvas"
         aria-labelledby="values-heading"
       >
         <Container>
@@ -232,10 +282,10 @@ export default function ProfilePage() {
       </section>
 
       {/* ========================================================= */}
-      {/* 5. LEGALITAS & LEGAL STANDING (KREDENSIAL RESMI)          */}
+      {/* 6. LEGALITAS & LEGAL STANDING (KREDENSIAL RESMI)          */}
       {/* ========================================================= */}
       <section
-        className="py-16 sm:py-24 border-b border-border bg-canvas"
+        className="py-16 sm:py-24 border-b border-border bg-surface"
         aria-labelledby="legalities-heading"
       >
         <Container>
@@ -250,7 +300,7 @@ export default function ProfilePage() {
             {profileContent.legalities.map((item, idx) => (
               <div
                 key={idx}
-                className="flex flex-col justify-between rounded-card border border-border bg-surface p-6 sm:p-8 shadow-card hover:shadow-card-hover hover:-translate-y-1 hover:border-agri-green/60 transition-all duration-300"
+                className="flex flex-col justify-between rounded-card border-2 border-border bg-canvas p-6 sm:p-8 shadow-card hover:shadow-card-hover hover:-translate-y-1 hover:border-agri-green/60 transition-all duration-300"
               >
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-3">
@@ -267,7 +317,7 @@ export default function ProfilePage() {
                     {item.label}
                   </h3>
 
-                  <p className="mt-2 font-mono text-sm sm:text-base font-semibold text-ink bg-canvas px-3 py-1.5 rounded border border-border inline-block">
+                  <p className="mt-2 font-mono text-sm sm:text-base font-semibold text-ink bg-surface px-3 py-1.5 rounded border border-border inline-block">
                     {item.number}
                   </p>
 
@@ -279,48 +329,10 @@ export default function ProfilePage() {
             ))}
           </div>
 
-          <div className="mt-8 rounded-card border border-border bg-surface p-5 text-center text-xs text-muted-ink shadow-xs">
+          <div className="mt-8 rounded-card border border-border bg-canvas p-5 text-center text-xs text-muted-ink shadow-xs">
             <p className="text-justify sm:text-center">
               Dokumen fisik legalitas asli dapat diverifikasi oleh mitra bisnis resmi atau instansi berwenang melalui sekretariat kantor koperasi.
             </p>
-          </div>
-        </Container>
-      </section>
-
-      {/* ========================================================= */}
-      {/* 6. STANDAR BIOSECURITY & KESEJAHTERAAN TERNAK             */}
-      {/* ========================================================= */}
-      <section
-        className="py-16 sm:py-24 bg-surface"
-        aria-labelledby="biosecurity-heading"
-      >
-        <Container>
-          <SectionHeading
-            id="biosecurity-heading"
-            eyebrow="Jaminan Higienitas"
-            title={profileContent.biosecurity.title}
-            description={profileContent.biosecurity.subtitle}
-          />
-
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {profileContent.biosecurity.principles.map((pr) => (
-              <div
-                key={pr.step}
-                className="flex flex-col rounded-card border border-border bg-canvas p-6 shadow-card hover:shadow-card-hover hover:-translate-y-1 hover:border-agri-green/60 transition-all duration-300"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-surface border border-border text-agri-green font-bold text-sm mb-4">
-                  0{pr.step}
-                </div>
-
-                <h3 className="text-base font-bold text-ink mb-2">
-                  {pr.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-muted-ink leading-relaxed text-justify">
-                  {pr.description}
-                </p>
-              </div>
-            ))}
           </div>
         </Container>
       </section>

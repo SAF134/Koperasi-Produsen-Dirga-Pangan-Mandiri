@@ -33,7 +33,7 @@ export function FeatureCard({
       <div>
         <div className="flex items-center justify-between gap-4 mb-4">
           {icon && (
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-surface border border-border text-agri-green shadow-xs transition-transform duration-200 group-hover:scale-110">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-surface border-2 border-border text-agri-green shadow-xs transition-transform duration-200 group-hover:scale-110">
               {icon}
             </div>
           )}

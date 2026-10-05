@@ -1,6 +1,6 @@
 # Design Guidelines & System Specification: Website Koperasi Produsen Dirga Pangan Mandiri
 
-Dokumen ini mendefinisikan sistem desain antarmuka (UI) dan pengalaman pengguna (UX) resmi untuk Koperasi Produsen Dirga Pangan Mandiri. Seluruh tokens, proporsi layout, dan komponen diturunkan langsung dari spesifikasi dasar arsitektur editorial minimalis (*morning light on cream paper*) yang diselaraskan dengan kebutuhan representasi kelembagaan peternakan ayam broiler modern yang higienis, terorganisir, dan berorientasi kemitraan B2B.
+Dokumen ini mendefinisikan sistem desain antarmuka (UI) dan pengalaman pengguna (UX) resmi untuk Koperasi Produsen Dirga Pangan Mandiri. Seluruh tokens, proporsi layout, dan komponen diturunkan langsung dari spesifikasi dasar arsitektur editorial minimalis (_morning light on cream paper_) yang diselaraskan dengan kebutuhan representasi kelembagaan peternakan ayam broiler modern yang higienis, terorganisir, dan berorientasi kemitraan B2B.
 
 ---
 
@@ -11,18 +11,18 @@ Karakter visual menggabungkan ketenangan estetika **editorial cetak berkualitas 
 ### Tiga Prinsip Inti
 
 1. **Restraint & Editorial Warmth (Ketenangan & Kehangatan Editorial)**
-   - Kanvas utama menggunakan *Warm Cream Paper* (`#f8f8f2`) yang memberikan kehangatan kertas cetak, dipadukan dengan permukaan kartu *Card White* (`#ffffff`).
-   - Teks utama mengutamakan *Studio Ink* (`#1a1a1a`) dengan keterbacaan tinggi.
-   - **Tanpa Drop-Shadow Tebal:** Elevasi elemen diciptakan murni melalui pergeseran warna permukaan (*color-shift* dari kanvas krem ke kartu putih) dan garis batas tipis (*hairline border* 1px `#e5e5dc`). Tidak menggunakan bayangan buram berat atau gradien warna yang ramai.
+   - Kanvas utama menggunakan _Warm Cream Paper_ (`#f8f8f2`) yang memberikan kehangatan kertas cetak, dipadukan dengan permukaan kartu _Card White_ (`#ffffff`).
+   - Teks utama mengutamakan _Studio Ink_ (`#1a1a1a`) dengan keterbacaan tinggi.
+   - **Tanpa Drop-Shadow Tebal:** Elevasi elemen diciptakan murni melalui pergeseran warna permukaan (_color-shift_ dari kanvas krem ke kartu putih) dan garis batas tipis (_hairline border_ 1px `#e5e5dc`). Tidak menggunakan bayangan buram berat atau gradien warna yang ramai.
 
 2. **Grounded & Trustworthy (Membumi, Higienis, & Transparan)**
    - Representasi komoditas ayam broiler disajikan secara faktual, higienis, dan profesional melalui data terstruktur (kapasitas populasi, siklus panen, biosecurity closed house).
-   - Aksen brand pertanian modern menggunakan *Deep Forest Green* (`#166534`) untuk kredibilitas kelembagaan dan *Mint Wash / Agri Light* (`#e8f5e9`) untuk kartu sorotan.
-   - Indikator kesiapan operasional memanfaatkan *Live Green Status Dot* (`#10b981`) di header dan hero.
+   - Aksen brand pertanian modern menggunakan _Deep Forest Green_ (`#166534`) untuk kredibilitas kelembagaan dan _Mint Wash / Agri Light_ (`#e8f5e9`) untuk kartu sorotan.
+   - Indikator kesiapan operasional memanfaatkan _Live Green Status Dot_ (`#10b981`) di header dan hero.
 
 3. **Mobile-First & Direct Action (Kemudahan Akses Seluler & Aksi Cepat)**
-   - Setiap halaman memprioritaskan kemudahan membaca di perangkat seluler dengan area sentuh tombol (*touch target*) minimal 44x44px.
-   - Akses komunikasi instan ke WhatsApp tersedia di sudut kanan bawah layar (*Floating Action Button*) serta tombol aksi terarah di setiap penutup bagian halaman.
+   - Setiap halaman memprioritaskan kemudahan membaca di perangkat seluler dengan area sentuh tombol (_touch target_) minimal 44x44px.
+   - Akses komunikasi instan ke WhatsApp tersedia di sudut kanan bawah layar (_Floating Action Button_) serta tombol aksi terarah di setiap penutup bagian halaman.
 
 ---
 
@@ -30,33 +30,33 @@ Karakter visual menggabungkan ketenangan estetika **editorial cetak berkualitas 
 
 ### 2.1 Palet Warna (Color Tokens)
 
-| Token Name | Token CSS | Nilai Hex | Peran & Penerapan | Rasio Kontras vs Kanvas |
-|---|---|---|---|---|
-| **Cream Paper / Canvas** | `--color-canvas` | `#f8f8f2` | Latar belakang dasar seluruh halaman | Base (1.0:1) |
-| **Card White / Surface** | `--color-surface` | `#ffffff` | Latar kartu konten, bilah navigasi, container modal | 1.08:1 (*Subtle elevation*) |
-| **Studio Ink** | `--color-ink` | `#1a1a1a` | Teks judul utama, teks tubuh tebal, tombol aksi primer | **16.2:1** (WCAG AAA) |
-| **Muted Ink** | `--color-muted-ink` | `#525252` | Teks sekunder, deskripsi pendukung, metadata | **5.3:1** (WCAG AA) |
-| **Border Hairline** | `--color-border` | `#e5e5dc` | Garis pembatas kartu 1px dan divider section | N/A (Dekoratif/Batas) |
-| **Border Dark** | `--color-border-dark` | `#1a1a1a` | Garis penegas aksen editorial tipis 1px | 16.2:1 |
-| **Agri Forest Green** | `--color-agri-green` | `#166534` | Aksen brand koperasi: badge, link aktif, ikon primer | **6.8:1** (WCAG AAA) |
-| **Agri Light / Mint Wash**| `--color-agri-light` | `#e8f5e9` | Latar kartu fitur khusus, tint highlight komoditas | N/A (*Surface wash*) |
-| **Status Green** | `--color-status-green`| `#10b981` | Titik indikator operasional (*Live status dot*) | N/A (*Functional dot*) |
-| **WhatsApp Green** | `--color-wa` | `#25d366` | Tombol Floating WhatsApp resmi | Kontras tinggi dgn putih |
+| Token Name                 | Token CSS              | Nilai Hex | Peran & Penerapan                                      | Rasio Kontras vs Kanvas     |
+| -------------------------- | ---------------------- | --------- | ------------------------------------------------------ | --------------------------- |
+| **Cream Paper / Canvas**   | `--color-canvas`       | `#f8f8f2` | Latar belakang dasar seluruh halaman                   | Base (1.0:1)                |
+| **Card White / Surface**   | `--color-surface`      | `#ffffff` | Latar kartu konten, bilah navigasi, container modal    | 1.08:1 (_Subtle elevation_) |
+| **Studio Ink**             | `--color-ink`          | `#1a1a1a` | Teks judul utama, teks tubuh tebal, tombol aksi primer | **16.2:1** (WCAG AAA)       |
+| **Muted Ink**              | `--color-muted-ink`    | `#525252` | Teks sekunder, deskripsi pendukung, metadata           | **5.3:1** (WCAG AA)         |
+| **Border Hairline**        | `--color-border`       | `#e5e5dc` | Garis pembatas kartu 1px dan divider section           | N/A (Dekoratif/Batas)       |
+| **Border Dark**            | `--color-border-dark`  | `#1a1a1a` | Garis penegas aksen editorial tipis 1px                | 16.2:1                      |
+| **Agri Forest Green**      | `--color-agri-green`   | `#166534` | Aksen brand koperasi: badge, link aktif, ikon primer   | **6.8:1** (WCAG AAA)        |
+| **Agri Light / Mint Wash** | `--color-agri-light`   | `#e8f5e9` | Latar kartu fitur khusus, tint highlight komoditas     | N/A (_Surface wash_)        |
+| **Status Green**           | `--color-status-green` | `#10b981` | Titik indikator operasional (_Live status dot_)        | N/A (_Functional dot_)      |
+| **WhatsApp Green**         | `--color-wa`           | `#25d366` | Tombol Floating WhatsApp resmi                         | Kontras tinggi dgn putih    |
 
 ### 2.2 Tipografi & Skala Teks (Typography Tokens)
 
-- **Typeface Tunggal:** `Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`  
-- Tipografi bersifat geometris bersih tanpa serif, dengan pengetatan *letter-spacing* (*negative tracking*) pada judul besar untuk menghadirkan ketegasan arsitektural.
+- **Typeface Tunggal:** `Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`
+- Tipografi bersifat geometris bersih tanpa serif, dengan pengetatan _letter-spacing_ (_negative tracking_) pada judul besar untuk menghadirkan ketegasan arsitektural.
 
-| Token Peran | Ukuran Desktop | Ukuran Mobile | Line Height | Tracking | Weight | Penggunaan |
-|---|---|---|---|---|---|---|
-| `display-hero` | 56px–72px | 36px–44px | 1.05 | -0.025em | 700 (Bold) | Kalimat utama Hero Beranda |
-| `heading-1` | 36px–44px | 28px–32px | 1.15 | -0.025em | 700 (Bold) | Judul Utama Halaman (H1) |
-| `heading-2` | 28px–32px | 24px | 1.25 | -0.02em | 600 (SemiBold) | Judul Section Tiap Halaman (H2) |
-| `heading-3` | 20px–22px | 18px–20px | 1.35 | -0.015em | 600 (SemiBold) | Judul Kartu & Sub-bagian (H3) |
-| `body-large` | 18px–20px | 16px–18px | 1.50 | Normal | 400 / 500 | Paragraf Pengantar / Lead Text |
-| `body-base` | 16px | 15px–16px | 1.60 | Normal | 400 (Regular) | Teks paragraf umum |
-| `caption-small`| 13px–14px | 12px–13px | 1.45 | +0.01em | 500 (Medium) | Label badge, metadata, legalitas |
+| Token Peran     | Ukuran Desktop | Ukuran Mobile | Line Height | Tracking | Weight         | Penggunaan                       |
+| --------------- | -------------- | ------------- | ----------- | -------- | -------------- | -------------------------------- |
+| `display-hero`  | 56px–72px      | 36px–44px     | 1.05        | -0.025em | 700 (Bold)     | Kalimat utama Hero Beranda       |
+| `heading-1`     | 36px–44px      | 28px–32px     | 1.15        | -0.025em | 700 (Bold)     | Judul Utama Halaman (H1)         |
+| `heading-2`     | 28px–32px      | 24px          | 1.25        | -0.02em  | 600 (SemiBold) | Judul Section Tiap Halaman (H2)  |
+| `heading-3`     | 20px–22px      | 18px–20px     | 1.35        | -0.015em | 600 (SemiBold) | Judul Kartu & Sub-bagian (H3)    |
+| `body-large`    | 18px–20px      | 16px–18px     | 1.50        | Normal   | 400 / 500      | Paragraf Pengantar / Lead Text   |
+| `body-base`     | 16px           | 15px–16px     | 1.60        | Normal   | 400 (Regular)  | Teks paragraf umum               |
+| `caption-small` | 13px–14px      | 12px–13px     | 1.45        | +0.01em  | 500 (Medium)   | Label badge, metadata, legalitas |
 
 ### 2.3 Spasi, Kontainer, & Radius Sudut (Spacing & Geometry)
 
@@ -74,6 +74,7 @@ Karakter visual menggabungkan ketenangan estetika **editorial cetak berkualitas 
 ### 2.4 Sistem Elevasi Permukaan (Surfaces & No-Shadow Rule)
 
 Desain ini secara tegas meniadakan drop-shadow blur tebal:
+
 ```text
 [ Level 0 ]: Cream Canvas (#f8f8f2)  -> Latar dasar seluruh halaman
 [ Level 1 ]: Card White (#ffffff)    -> Kartu konten, navbar, modal dialog
@@ -86,35 +87,42 @@ Desain ini secara tegas meniadakan drop-shadow blur tebal:
 ## 3. Komponen Desain Terstandar (Component Inventory)
 
 ### 3.1 Top Navigation Bar (Header)
+
 - **Struktur:**
   - Kiri: Wordmark tipografis `"DIRGA PANGAN"` (font-semibold, tracking-tight, Studio Ink `#1a1a1a`).
   - Tengah (Desktop): Tautan navigasi (`Beranda`, `Profil`, `Usaha`, `Organisasi`, `Galeri`, `Kontak`) dengan garis bawah penanda halaman aktif.
-  - Kanan (Desktop): *Live Status Dot* hijau (`#10b981`) bertuliskan *"Pasokan Aktif"* serta tombol sekunder *"Hubungi Kami"*.
+  - Kanan (Desktop): _Live Status Dot_ hijau (`#10b981`) bertuliskan _"Pasokan Aktif"_ serta tombol sekunder _"Hubungi Kami"_.
   - Mobile: Tombol Menu Hamburger yang membuka drawer navigasi vertikal responsif.
-- **Permukaan:** Latar putih `#ffffff` atau krem ber-backdrop blur halus (`rgba(248, 248, 242, 0.95)`), 1px border bawah `#e5e5dc`, menempel (*sticky*) di bagian atas layar.
+- **Permukaan:** Latar putih `#ffffff` atau krem ber-backdrop blur halus (`rgba(248, 248, 242, 0.95)`), 1px border bawah `#e5e5dc`, menempel (_sticky_) di bagian atas layar.
 
 ### 3.2 Display Hero
+
 - **Struktur:** Kalimat pernyataan tegas berukuran display (56–72px desktop) dengan bobot 700 dan warna `#1a1a1a`.
-- **Elemen:** Didahului oleh indikator status pasokan (*Live Green Dot*), diikuti oleh paragraf deskripsi berukuran 18–20px diatur rata kiri dengan spasi atas 32px, dan tombol aksi terarah.
+- **Elemen:** Didahului oleh indikator status pasokan (_Live Green Dot_), diikuti oleh paragraf deskripsi berukuran 18–20px diatur rata kiri dengan spasi atas 32px, dan tombol aksi terarah.
 
 ### 3.3 Kartu Layanan & Fitur (Feature Card)
+
 - **Struktur:** Radius sudut 12px, padding dalam 32px, border tipis 1px `#e5e5dc`.
 - **Varian:**
-  - *Varian Netral:* Latar putih murni (`#ffffff`), teks `#1a1a1a`, ikon fungsional Lucide.
-  - *Varian Agri Wash:* Latar hijau lembut (`#e8f5e9`), digunakan untuk menonjolkan keunggulan sistem *closed house* dan kemitraan plasma.
+  - _Varian Netral:_ Latar putih murni (`#ffffff`), teks `#1a1a1a`, ikon fungsional Lucide.
+  - _Varian Agri Wash:_ Latar hijau lembut (`#e8f5e9`), digunakan untuk menonjolkan keunggulan sistem _closed house_ dan kemitraan plasma.
 
 ### 3.4 Kartu Metrik Angka (Stat Card)
+
 - **Struktur:** Menampilkan angka tebal 36–44px Studio Ink (`#1a1a1a`) dengan label deskripsi 14px di bawahnya.
-- **Kepatuhan Data:** Menampilkan angka kapasitas populasi, jumlah mitra kandang, target siklus, dan status mutu *"Higienis & Terstandar"* (menggantikan klaim halal sementara sebelum sertifikasi resmi terbit).
+- **Kepatuhan Data:** Menampilkan angka kapasitas populasi, jumlah mitra kandang, target siklus, dan status mutu _"Higienis & Terstandar"_ (menggantikan klaim halal sementara sebelum sertifikasi resmi terbit).
 
 ### 3.5 Akordeon Tanya Jawab (Accordion FAQ)
-- **Struktur:** Daftar pertanyaan yang dapat diciutkan (*collapsible*), dipisahkan oleh garis batas 1px `#e5e5dc`, dengan transisi buka-tutup halus yang mematuhi `prefers-reduced-motion`.
+
+- **Struktur:** Daftar pertanyaan yang dapat diciutkan (_collapsible_), dipisahkan oleh garis batas 1px `#e5e5dc`, dengan transisi buka-tutup halus yang mematuhi `prefers-reduced-motion`.
 
 ### 3.6 Grid Galeri & Lightbox Modal
-- **Grid:** Rasio aspek konsisten 16:9 atau 4:3, radius 12px, border halus 1px.
+
+- **Grid:** Rasio aspek konsisten 16:9 atau 16:9, radius 12px, border halus 1px.
 - **Lightbox Modal:** Saat foto diklik, modal terbuka di atas kanvas dengan backdrop gelap (`rgba(0, 0, 0, 0.85)`), menampilkan gambar resolusi penuh, teks judul, tanggal/keterangan, serta tombol tutup di pojok kanan atas (dan penutupan melalui tombol keyboard `Esc`).
 
 ### 3.7 Tombol Aksi (Buttons)
+
 - **Dark Filled Button (Primer):** Latar `#1a1a1a`, teks `#ffffff`, radius 8px, padding vertikal 12–14px horizontal 22–24px.
 - **Outlined Button (Sekunder):** Latar `#ffffff`, border 1px `#e5e5dc`, teks `#1a1a1a`, radius 8px.
 - **Floating WhatsApp Button:** Melayang di kanan bawah (`bottom: 24px, right: 24px`), latar `#25d366`, ikon WhatsApp putih, target sentuh 52x52px (mobile 48x48px).
@@ -124,6 +132,7 @@ Desain ini secara tegas meniadakan drop-shadow blur tebal:
 ## 4. Spesifikasi Halaman & Wireframe Tekstual [SCR-xxx]
 
 ### `SCR-001` Beranda (`/`)
+
 ```text
 +------------------------------------------------------------------------+
 | [NAVBAR] DIRGA PANGAN     [Beranda] [Profil] [Usaha] ...   [Hubungi WA]|
@@ -159,6 +168,7 @@ Desain ini secara tegas meniadakan drop-shadow blur tebal:
 ```
 
 ### `SCR-002` Profil Koperasi (`/profil`)
+
 ```text
 +------------------------------------------------------------------------+
 | [PAGE HEADER] Profil & Integritas Kelembagaan                          |
@@ -174,7 +184,7 @@ Desain ini secara tegas meniadakan drop-shadow blur tebal:
 | [KARTU KREDENSIAL LEGALITAS] (Grid Kartu Putih Border 1px)            |
 | +----------------------------+ +----------------------------+          |
 | | Nomor Induk Berusaha (NIB) | | Pengesahan Kemenkop RI     |          |
-| | 1234567890123 [DRAFT]      | | AHU-0012345.AH.01.26 [DRAFT]          |
+| | 1509260034865      | | AHU-0007590.AH.01.29.2026           |
 | +----------------------------+ +----------------------------+          |
 +------------------------------------------------------------------------+
 | [STANDAR BIOSECURITY & KESEJAHTERAAN TERNAK]                           |
@@ -183,6 +193,7 @@ Desain ini secara tegas meniadakan drop-shadow blur tebal:
 ```
 
 ### `SCR-003` Bidang Usaha & Produksi (`/usaha`)
+
 ```text
 +------------------------------------------------------------------------+
 | [PAGE HEADER] Kapasitas Produksi & Skema Kemitraan                     |
@@ -206,6 +217,7 @@ Desain ini secara tegas meniadakan drop-shadow blur tebal:
 ```
 
 ### `SCR-004` Keorganisasian (`/organisasi`)
+
 ```text
 +------------------------------------------------------------------------+
 | [PAGE HEADER] Struktur Tata Kelola Koperasi                            |
@@ -226,15 +238,16 @@ Desain ini secara tegas meniadakan drop-shadow blur tebal:
 ```
 
 ### `SCR-005` Galeri Fasilitas & Dokumentasi (`/galeri`)
+
 ```text
 +------------------------------------------------------------------------+
 | [PAGE HEADER] Galeri Dokumentasi Kegiatan                              |
 | Dokumentasi fasilitas kandang closed house, proses panen, & anggota.  |
 +------------------------------------------------------------------------+
 | [FILTER KATEGORI]                                                      |
-| [ Semua ]  [ Fasilitas Kandang ]  [ Proses Panen ]  [ Kegiatan Anggota ]|
+| [ Semua ]  [ Fasilitas Usaha ]  [ Proses Usaha ]  [ Kegiatan Anggota ]|
 +------------------------------------------------------------------------+
-| [GRID FOTO RESPONSIF (16:9 / 4:3, Radius 12px)]                        |
+| [GRID FOTO RESPONSIF (16:9 / 16:9, Radius 12px)]                        |
 | [Foto 1: Kandang Modern]  [Foto 2: Kontrol Lingkungan] [Foto 3: Panen] |
 | [Foto 4: Timbang Bobot]   [Foto 5: Distribusi Karkas]  [Foto 6: Temu]  |
 | (Klik memicu Lightbox Modal dengan caption deskriptif dan tombol tutup)|
@@ -242,6 +255,7 @@ Desain ini secara tegas meniadakan drop-shadow blur tebal:
 ```
 
 ### `SCR-006` Kontak & Lokasi (`/kontak`)
+
 ```text
 +------------------------------------------------------------------------+
 | [PAGE HEADER] Hubungi Tim Koperasi                                     |
@@ -275,4 +289,4 @@ Desain ini secara tegas meniadakan drop-shadow blur tebal:
    - Setiap elemen formulir wajib menggunakan label `<label>` eksplisit yang terhubung dengan `id` input.
    - Pesan validasi error muncul langsung di bawah field terkait.
 4. **Alt Text Gambar:**
-   - Seluruh gambar wajib memiliki atribut `alt` deskriptif faktual untuk pembaca layar (*screen reader*).
+   - Seluruh gambar wajib memiliki atribut `alt` deskriptif faktual untuk pembaca layar (_screen reader_).

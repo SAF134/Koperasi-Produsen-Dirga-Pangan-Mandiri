@@ -38,7 +38,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/icon.svg",
+    icon: "/images/logo-koperasi.png",
+    shortcut: "/images/favicon.ico",
+    apple: "/images/logo-koperasi.png",
   },
   openGraph: {
     siteName: siteIdentity.name,
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
     locale: "id_ID",
     images: [
       {
-        url: "/images/og-dirga-pangan.jpg",
+        url: "/images/hero-koperasi.webp",
         width: 1200,
         height: 630,
         alt: `${siteIdentity.name} - Peternakan Ayam Broiler Modern Closed House`,
@@ -60,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteIdentity.name} | Ayam Broiler Berkualitas`,
     description: siteIdentity.summary,
-    images: ["/images/og-dirga-pangan.jpg"],
+    images: ["/images/hero-koperasi.webp"],
   },
   robots: {
     index: true,
@@ -90,7 +92,7 @@ export default function RootLayout({
         name: siteIdentity.name,
         alternateName: siteIdentity.shortName,
         url: siteIdentity.siteUrl,
-        logo: `${siteIdentity.siteUrl}/images/og-dirga-pangan.jpg`,
+        logo: `${siteIdentity.siteUrl}/images/logo-koperasi.png`,
         description: siteIdentity.summary,
         foundingDate: siteIdentity.establishedYear.toString(),
         address: {
@@ -114,7 +116,7 @@ export default function RootLayout({
         url: siteIdentity.siteUrl,
         telephone: `+${contactData.phoneRaw}`,
         email: contactData.email,
-        image: `${siteIdentity.siteUrl}/images/og-dirga-pangan.jpg`,
+        image: `${siteIdentity.siteUrl}/images/hero-koperasi.webp`,
         priceRange: "$$",
         address: {
           "@type": "PostalAddress",

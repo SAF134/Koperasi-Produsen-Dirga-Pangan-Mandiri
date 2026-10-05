@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import NextImage from "next/image";
 import {
   ShieldCheck,
   Users,
@@ -15,10 +13,7 @@ import SectionHeading from "@/components/shared/SectionHeading";
 import StatCard from "@/components/shared/StatCard";
 import FeatureCard from "@/components/shared/FeatureCard";
 import Button from "@/components/ui/Button";
-import {
-  homeContent,
-  galleryContent,
-} from "@/content/site-data";
+import { homeContent } from "@/content/site-data";
 
 export const metadata: Metadata = {
   title: "Koperasi Produsen Dirga Pangan Mandiri | Ayam Broiler Berkualitas",
@@ -30,9 +25,6 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  // Pick 3 gallery highlights for homepage
-  const galleryHighlights = galleryContent.items.slice(0, 3);
-
   return (
     <div className="flex flex-col">
       {/* Preload Responsive LCP Hero Image for Instant Mobile LCP */}
@@ -50,6 +42,7 @@ export default function HomePage() {
         media="(min-width: 641px)"
         type="image/webp"
       />
+
       {/* ========================================================= */}
       {/* 1. HERO SECTION (DENGAN TEMPAT GAMBAR UTAMA KOPERASI)      */}
       {/* ========================================================= */}
@@ -125,8 +118,8 @@ export default function HomePage() {
             {/* Kolom Tempat Gambar Utama Koperasi (Desktop: 5 kolom, Tablet: proporsional, Mobile: kartu elegan) */}
             <div className="lg:col-span-5 w-full">
               <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border-2 border-border bg-surface shadow-card hover:shadow-card-hover transition-all duration-300">
-                {/* Rasio Aspek Gambar: 4:3 di mobile, 16:9 di tablet, 4:3 / 5:4 di desktop */}
-                <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] lg:aspect-[4/3] xl:aspect-[5/4] bg-muted/30">
+                {/* Rasio Aspek Gambar: 16:9 HD di semua layar */}
+                <div className="relative w-full aspect-video bg-muted/30">
                   <picture>
                     <source
                       type="image/webp"
@@ -140,8 +133,8 @@ export default function HomePage() {
                     <img
                       src={homeContent.hero.image.fallbackSrc}
                       alt={homeContent.hero.image.alt}
-                      width={1200}
-                      height={670}
+                      width={1280}
+                      height={720}
                       loading="eager"
                       fetchPriority="high"
                       decoding="async"
@@ -199,24 +192,25 @@ export default function HomePage() {
       {/* 3. METRIK CAPAIAN & ANGKA KUNCI                          */}
       {/* ========================================================= */}
       <section
-        className="py-20 sm:py-24 border-b border-border bg-canvas"
+        className="py-20 sm:py-28 bg-canvas"
         aria-labelledby="metrics-heading"
       >
         <Container>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4">
-            <div>
-              <span className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-surface px-3 py-1 text-xs font-semibold uppercase tracking-wider text-agri-green mb-3.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-agri-green" aria-hidden="true" />
-                Kapasitas & Integritas
+          <div className="flex flex-col items-center text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
+            <span className="inline-flex items-center gap-2 rounded-full border-2 border-agri-green/30 bg-surface px-4 py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-agri-green shadow-xs hover:border-agri-green hover:shadow-card transition-all duration-200 mb-3.5">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-agri-green opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-agri-green" />
               </span>
-              <h2
-                id="metrics-heading"
-                className="text-2xl font-bold tracking-tight text-ink sm:text-3xl lg:text-4xl"
-              >
-                Pertumbuhan Nyata Peternakan Rakyat
-              </h2>
-            </div>
-            <p className="text-sm sm:text-base text-muted-ink max-w-md text-justify">
+              <span>Kapasitas & Integritas</span>
+            </span>
+            <h2
+              id="metrics-heading"
+              className="text-2xl font-bold tracking-tight text-ink sm:text-3xl lg:text-4xl text-center"
+            >
+              Pertumbuhan Nyata Peternakan Rakyat
+            </h2>
+            <p className="mt-3.5 text-sm sm:text-base text-muted-ink max-w-xl text-center">
               Data kapasitas terkelola yang terus bertumbuh melalui kolaborasi peternak plasma binaan di Jawa Barat.
             </p>
           </div>
@@ -230,137 +224,6 @@ export default function HomePage() {
                 description={metric.description}
                 icon={<Sparkles className="h-4 w-4 text-agri-green" aria-hidden="true" />}
               />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ========================================================= */}
-      {/* 4. SEKILAS KOMODITAS & KAPASITAS UNGGULAN                */}
-      {/* ========================================================= */}
-      <section
-        className="py-20 sm:py-28 border-b border-border bg-surface"
-        aria-labelledby="commodity-heading"
-      >
-        <Container>
-          <SectionHeading
-            id="commodity-heading"
-            eyebrow="Spesifikasi Produk"
-            title={homeContent.commoditiesOverview.title}
-            description={homeContent.commoditiesOverview.subtitle}
-          />
-
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-            {homeContent.commoditiesOverview.items.map((item) => (
-              <div
-                key={item.id}
-                className="flex flex-col justify-between rounded-card border-2 border-border bg-surface p-6 sm:p-8 shadow-card hover:shadow-card-hover hover:-translate-y-1 hover:border-agri-green transition-all duration-300"
-              >
-                <div>
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-agri-green bg-agri-light px-2.5 py-1 rounded-pill">
-                      {item.category}
-                    </span>
-                    <span className="flex items-center gap-1 text-xs font-semibold text-ink bg-surface border border-border px-3 py-1 rounded-pill">
-                      <Scale className="h-3.5 w-3.5 text-agri-green" aria-hidden="true" />
-                      Bobot: {item.weightRange}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
-                    {item.name}
-                  </h3>
-
-                  <p className="mt-3 text-sm sm:text-base text-muted-ink leading-relaxed text-justify">
-                    {item.description}
-                  </p>
-
-                  <ul className="mt-6 space-y-2.5 border-t border-border/80 pt-6">
-                    {item.highlights.map((highlight, hIdx) => (
-                      <li key={hIdx} className="flex items-start gap-2.5 text-sm text-ink font-medium">
-                        <CheckCircle2 className="h-4 w-4 shrink-0 text-agri-green mt-0.5" aria-hidden="true" />
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-border">
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    href="/usaha"
-                    className="w-full sm:w-auto"
-                    iconRight={<ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />}
-                  >
-                    Pelajari Rantai Pasok Usaha
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ========================================================= */}
-      {/* 5. CUPLIKAN GALERI FASILITAS                             */}
-      {/* ========================================================= */}
-      <section
-        className="py-20 sm:py-28 bg-canvas"
-        aria-labelledby="gallery-preview-heading"
-      >
-        <Container>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-4">
-            <div>
-              <span className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-surface px-3 py-1 text-xs font-semibold uppercase tracking-wider text-agri-green mb-3.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-agri-green" aria-hidden="true" />
-                Fasilitas Nyata
-              </span>
-              <h2
-                id="gallery-preview-heading"
-                className="text-2xl font-bold tracking-tight text-ink sm:text-3xl lg:text-4xl"
-              >
-                Dokumentasi Lapangan Terverifikasi
-              </h2>
-            </div>
-            <Link
-              href="/galeri"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-ink hover:text-agri-green transition-colors"
-            >
-              <span>Buka Galeri Dokumentasi Lengkap</span>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {galleryHighlights.map((item) => (
-              <div
-                key={item.id}
-                className="group relative flex flex-col overflow-hidden rounded-card border-2 border-border bg-surface shadow-card hover:shadow-card-hover hover:-translate-y-1 hover:border-agri-green transition-all duration-300"
-              >
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/5">
-                  <NextImage
-                    src={item.imageUrl}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 400px"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-ink">
-                      {item.category}
-                    </span>
-                    <h3 className="mt-1 text-base font-bold text-ink group-hover:text-agri-green transition-colors">
-                      {item.title}
-                    </h3>
-                  </div>
-                  <p className="mt-2 text-xs text-muted-ink line-clamp-2 text-justify">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
             ))}
           </div>
         </Container>
